@@ -12,6 +12,7 @@ def create_shared_feature_extractor(input_shape=(192, 256, 3), l=0.001):
 
     pool1 = layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding="same", name='pool1')(conv1)
     norm1 = LRN(name='norm1')(pool1)
+    # norm1 = layers.BatchNormalization(name='norm1')(pool1)
     drop1 = layers.Dropout(0.1, name='dropout1')(norm1)
 
     layer1_1 = layers.Lambda(lambda x: x[:, :, :, :48], name='split1_1')(drop1)
@@ -29,6 +30,7 @@ def create_shared_feature_extractor(input_shape=(192, 256, 3), l=0.001):
 
     pool2 = layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2), name='pool2')(conv2)
     norm2 = LRN(name="norm2")(pool2)
+    # norm2 = layers.BatchNormalization(name="norm2")(pool2)
     drop2 = layers.Dropout(0.1, name='dropout2')(norm2)
 
     conv3 = layers.Conv2D(384, kernel_size=(3, 3), strides=(1, 1), activation='relu',
