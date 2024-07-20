@@ -42,7 +42,7 @@ def rating_data_generator(X, y, batch_size):
             
 
 # Custom generator for comparison data
-def comparison_data_generator(image_pairs, labels, batch_size=32):
+def comparison_data_generator(image_pairs, labels, batch_size):
     """
     Custom data generator function for comparison task.
     
@@ -98,7 +98,7 @@ def comparison_data_generator(image_pairs, labels, batch_size=32):
 
 
 # Combined generator
-def combined_data_generator(rating_gen, comparison_gen, batch_size=32):
+def combined_data_generator(rating_gen, comparison_gen, batch_size):
     """
     Combines two generators into one, yielding batches of data for both tasks.
     
@@ -121,9 +121,9 @@ def combined_data_generator(rating_gen, comparison_gen, batch_size=32):
         comparison_data, comparison_labels = next(comparison_iter)
 
 
-        # Check if either batch is smaller than the specified batch size
-        if rating_data.shape[0] < batch_size or comparison_data[0].shape[0] < batch_size:
-            continue  # Drop this batch and move to the next one
+        # # Check if either batch is smaller than the specified batch size
+        # if rating_data.shape[0] < batch_size or comparison_data[0].shape[0] < batch_size:
+        #     continue  # Drop this batch and move to the next one
 
         #         # Ensure both generators yield batches of the same size
         # min_batch_size = min(rating_data.shape[0], comparison_data[0].shape[0])

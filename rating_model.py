@@ -20,7 +20,7 @@ def create_ratingModel(shared_base, l=0.001):
                        kernel_initializer=initializers.RandomNormal(mean=0.0, stddev=0.01),
                        bias_initializer='zeros')(drop7)
 
-    rating_model = models.Model(inputs=shared_base.input, outputs=fc8)
+    rating_model = models.Model(inputs=shared_base.input, outputs=fc8, name = 'rating_model')
 
     return rating_model
     # return fc8
