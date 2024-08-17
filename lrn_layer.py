@@ -3,7 +3,14 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.layers import Layer
 from keras import backend as K
+import numpy as np
+import random
 
+
+seed_value = 400
+random.seed(seed_value)
+np.random.seed(seed_value)
+tf.random.set_seed(seed_value)
 
 class LRN(Layer):
 

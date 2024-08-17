@@ -2,6 +2,15 @@
 from tensorflow import keras
 from keras import layers, models, regularizers
 from lrn_layer import LRN  
+import numpy as np
+import random
+import tensorflow as tf
+
+
+seed_value = 400
+random.seed(seed_value)
+np.random.seed(seed_value)
+tf.random.set_seed(seed_value)
 
 def create_shared_feature_extractor(input_shape=(192, 256, 3), l=0.001):
     im_data = layers.Input(shape=input_shape, dtype='float32', name='im_data')

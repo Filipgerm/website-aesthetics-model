@@ -4,10 +4,11 @@ import tensorflow as tf
 import numpy as np
 import random
 
-# # Set seeds for reproducibility
-# random.seed(42)
-# np.random.seed(42)
-# tf.random.set_seed(42)
+# Set seeds for reproducibility
+seed_value = 400
+random.seed(seed_value)
+np.random.seed(seed_value)
+tf.random.set_seed(seed_value)
 # # os.environ['TF_DETERMINISTIC_OPS'] = '1'
 
 def create_comparisonModel(shared_base, l=0.001):
