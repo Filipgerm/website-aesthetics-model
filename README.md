@@ -1,0 +1,5 @@
+- The convolutional layers of the multi-task model are pretrained on the [Flickr Style dataset](https://caffe.berkeleyvision.org/gathered/examples/finetune_flickr_style.html) for image style recognition task (217 Mb). 
+- The rating task dataset can be found [here](https://github.com/Filipgerm/website-aesthetics-datasets).
+- The "image_map" directory contains the comparison task datasets. These are "train_image_pairs.csv" and "test_image_pairs.csv".
+- The crowdsourcing app used to collect the comparison task dataset can be found [here](https://github.com/Filipgerm/crowdsourcing-app).
+- Environment.yml contains the environment dependencies needed to execute the code. 
