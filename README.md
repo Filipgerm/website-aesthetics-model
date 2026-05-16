@@ -140,7 +140,64 @@ The system is particularly useful for content curation, website design evaluatio
 conda env create -f environment.yml
 
 # Activate environment
-conda activate Lastenv
+conda activate env
+```
+
+### Download Datasets
+```bash
+# Clone the rating-based dataset repository
+git clone https://github.com/Filipgerm/website-aesthetics-datasets
+cd website-aesthetics-datasets
+
+# Note: You'll need to adjust paths in the notebooks to point to your dataset location
+# Currently configured for relative paths - update as needed for your setup
+```
+
+### Run Notebooks
+Rating Task (rating.ipynb)
+
+```bash
+jupyter notebook rating.ipynb
+```
+Trains the model on direct aesthetic rating predictions. View cell outputs to see training curves and evaluation metrics.
+
+### Comparison Task (comparison.ipynb)
+
+```bash
+jupyter notebook comparison.ipynb
+```
+Trains the model on pairwise image comparison data. Includes performance comparison between individual tasks.
+
+### Ensemble Model (Ensemble.ipynb)
+
+``` bash
+jupyter notebook Ensemble.ipynb
+```
+Combines predictions from all three tasks. Demonstrates ensemble inference and prediction visualization.
+
+### Key Configuration Points
+* **Data Paths:** Update the relative paths in each notebook to match your local directory structure (currently points to `../../Calista/website-aesthetics-datasets-master/`)
+* **Model Weights:** Load pretrained Flickr Style weights from Caffe or convert from available TensorFlow checkpoints
+* **Hyperparameters:** Modify batch size, learning rate, and task weights in the respective notebooks
+* **Ensemble Weights:** Adjust the weighting scheme in `Ensemble.ipynb` to prioritize different tasks (e.g., favor comparison over style)
+
+### Expected Results
+* **Rating Task:** Mean Absolute Error ~0.5-0.8 on held-out test set (depending on rating scale)
+* Comparison Task:** Accuracy 70-85% on preference prediction
+* **Ensemble:** Improved robustness and reduced prediction variance across all images
+* **Runtime:** ~5-10 minutes per notebook execution on GPU, 30-60 minutes on CPU
+
+### Troubleshooting
+* **Memory Issues:** Reduce batch size in notebooks (search for batch_size = )
+* **Missing Data:** Verify dataset paths match the cloned repository structure
+* **Import Errors: Ensure all packages from environment.yml are properly installed by running conda env update -f environment.yml
+
+### Related Repositories
+[Website Aesthetics Datasets](https://github.com/Filipgerm/website-aesthetics-datasets) - Training and evaluation data
+[Crowdsourcing App](https://github.com/Filipgerm/crowdsourcing-app) - Data collection interface for comparison judgments
+
+### License
+This project is provided as-is for research and educational purposes.
 
 
 
